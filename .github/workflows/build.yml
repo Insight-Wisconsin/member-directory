@@ -18,14 +18,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies (if package.json exists)
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          fi
+      - name: List repo contents
+        run: ls -R .
 
       - name: Build students.json
-        run: node scripts/build.js
+        run: node student-directory/scripts/build.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -34,4 +31,3 @@ jobs:
           publish_branch: gh-pages
           publish_dir: .
           force_orphan: true
-
