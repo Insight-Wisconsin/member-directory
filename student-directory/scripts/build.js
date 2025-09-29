@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const studentsDir = path.join(__dirname, "..", "students");
-const outputFile = path.join(__dirname, "..", "students.json");
+const outputFile = path.join(__dirname, "..", "..", "students.json");
 
 const students = [];
 
