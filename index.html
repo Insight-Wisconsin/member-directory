@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Directory</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4 bg-light">
+  <div class="container">
+    <h1 class="mb-4">Student Directory</h1>
+    <div id="directory" class="row g-3"></div>
+  </div>
+
+  <script>
+    async function loadDirectory() {
+      try {
+        const response = await fetch("students.json");
+        const students = await response.json();
+
+        const container = document.getElementById("directory");
+        students.forEach(s => {
+          const card = document.createElement("div");
+          card.className = "col-md-4";
+          card.innerHTML = `
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title">${s.firstName} ${s.lastName}</h5>
+                <p class="card-text">GitHub: <a href="https://github.com/${s.github}" target="_blank">@${s.github}</a></p>
+                <p class="card-text"><em>${s.funFact}</em></p>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error("Error loading student directory:", err);
+      }
+    }
+    loadDirectory();
+  </script>
+</body>
+</html>
+

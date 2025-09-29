@@ -1,0 +1,15 @@
+[
+  {
+    "firstName": "Divij",
+    "lastName": "Kohli",
+    "github": "divijsinghkohli",
+    "major": "Computer Science",
+    "funFact": "I am a Seattle Seahawks fan"
+  },
+  {
+    "firstName": "Test",
+    "lastName": "Student",
+    "github": "teststudent",
+    "funFact": "This is a test profile!"
+  }
+]
