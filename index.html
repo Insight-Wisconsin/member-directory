@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Student Directory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="p-4 bg-light">
+<body>
+  <div class="header">
+    <h1>Student Directory</h1>
+  </div>
+
   <div class="container">
-    <h1 class="mb-4">Student Directory</h1>
-    <div id="directory" class="row g-3"></div>
+    <div id="directory" class="row g-4"></div>
   </div>
 
   <script>
@@ -20,9 +28,9 @@
         const container = document.getElementById("directory");
         students.forEach(s => {
           const card = document.createElement("div");
-          card.className = "col-md-4";
+          card.className = "col-lg-4 col-md-6";
           card.innerHTML = `
-            <div class="card shadow-sm h-100">
+            <div class="card h-100">
               <div class="card-body">
                 <h5 class="card-title">${s.firstName} ${s.lastName}</h5>
                 <p class="card-text">GitHub: <a href="https://github.com/${s.github}" target="_blank">@${s.github}</a></p>
@@ -34,10 +42,11 @@
         });
       } catch (err) {
         console.error("Error loading student directory:", err);
+        const container = document.getElementById("directory");
+        container.innerHTML = "<p style='color: var(--primary-orange);'>No student data to display.</p>";
       }
     }
     loadDirectory();
   </script>
 </body>
 </html>
-
