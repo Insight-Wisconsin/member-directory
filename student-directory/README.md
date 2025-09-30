@@ -4,7 +4,7 @@ Welcome! In this activity you will learn the basic Git workflow: cloning, branch
 
 When everyone contributes, your info will show up on a live **Student Directory webpage**. 
 
----
+----
 
 ## Instructions
 
