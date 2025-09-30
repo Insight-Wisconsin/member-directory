@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 👈 ensures main branch history is available
 
       - name: Validate changed files
         run: |
@@ -20,8 +22,8 @@ jobs:
           CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
           echo "Changed files: $CHANGED_FILES"
           for file in $CHANGED_FILES; do
-            if [[ ! $file =~ ^students/.*\.json$ ]]; then
-              echo " Invalid change detected: $file"
+            if [[ ! $file =~ ^student-directory/students/.*\.json$ ]]; then
+              echo "Invalid change detected: $file"
               exit 1
             fi
           done
@@ -31,4 +33,3 @@ jobs:
         with:
           pull-request-number: ${{ github.event.pull_request.number }}
           merge-method: squash
-
